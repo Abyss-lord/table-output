@@ -1,0 +1,9 @@
+[versions]
+spotless-plugin = '6.11.0'
+kotlin = "1.9.0"
+
+[libraries]
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+
+[plugins]
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless-plugin" }

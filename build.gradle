@@ -1,0 +1,95 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    alias(libs.plugins.spotless)
+}
+
+group = 'com.tyy'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    lombokVersion = '1.18.30'
+    junitVersion = '5.9.1'
+    guavaVersion = '32.1.2-jre'
+    jlineVersion = '3.21.0'
+}
+
+
+dependencies {
+    // 测试依赖
+    testImplementation platform("org.junit:junit-bom:${junitVersion}")
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // Lombok 配置
+    def lombokDependency = "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly lombokDependency
+    annotationProcessor lombokDependency
+    testCompileOnly lombokDependency
+    testAnnotationProcessor lombokDependency
+
+    // 工具库
+    implementation "com.google.guava:guava:${guavaVersion}"
+    implementation group: 'org.jline', name: 'jline', version: "${jlineVersion}"
+}
+
+allprojects {
+    tasks.named("compileJava").configure {
+        dependsOn("spotlessCheck")
+    }
+}
+
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    finalizedBy jacocoTestReport
+}
+
+jacoco {
+    reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+spotless {
+    encoding 'UTF-8'
+
+    java {
+        googleJavaFormat('1.7')
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+        replaceRegex(
+                'Remove wildcard imports',
+                'import\\s+[^\\*\\s]+\\*;(\\r\\n|\\r|\\n)',
+                '$1'
+        )
+        replaceRegex(
+                'Remove static wildcard imports',
+                'import\\s+(?:static\\s+)?[^*\\s]+\\*;(\\r\\n|\\r|\\n)',
+                '$1'
+        )
+        targetExclude('**/build/**', '**/.pnpm/***')
+    }
+
+    kotlinGradle {
+        target('*.gradle.kts')
+        ktlint().editorConfigOverride([
+                'indent_size'             : 2,
+                'continuation_indent_size': 4
+        ])
+    }
+}
