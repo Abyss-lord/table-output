@@ -318,30 +318,26 @@ table.printInfo();
 Table table = new Table.Builder().withTitle("TITLE LINE 1").withRowNumbersEnabled(true).build();
 
 // 创建列
-Column name =
-				new Column
-						.Builder()
-						.withHeader("name")
-						.withFooter("foot1")
-						.build();
-name
-		.addCell("John")
-		.addCell("Jane")
-		.addCell("Bob")
-		.addCell("Alice");
+Column name = new Column
+    .Builder()
+    .withHeader("name")
+    .withFooter("foot1")
+    .build();
+name.addCell("John")
+  .addCell("Jane")
+  .addCell("Bob")
+  .addCell("Alice");
 
-Column comment =
-        new Column
-            .Builder()
-            .withHeader("Comment")
-            .withFooter("foot2")
-            .withMaxWidth(10)
-            .build();
-comment
-    .addCell("This is a comment")
-    .addCell("This is another comment")
-    .addCell("This is a third comment")
-    .addCell("This is a fourth comment");
+Column comment = new Column
+    .Builder()
+    .withHeader("Comment")
+    .withFooter("foot2")
+    .withMaxWidth(10)
+    .build();
+comment.addCell("This is a comment")
+  .addCell("This is another comment")
+  .addCell("This is a third comment")
+  .addCell("This is a fourth comment");
 
 // 打印
 table.addColumns(name, comment);
@@ -372,37 +368,33 @@ table.printInfo();
 ```java
 // 创建表
 Table table = new Table
-				.Builder()
-				.withTitle("TITLE LINE 1")
-				.withRowNumbersEnabled(true)
-				.withOverflowBehaviour(OverflowBehaviour.CLIP_LEFT)
-				.build();
+    .Builder()
+    .withTitle("TITLE LINE 1")
+    .withRowNumbersEnabled(true)
+    .withOverflowBehaviour(OverflowBehaviour.CLIP_LEFT)
+    .build();
 
 // 创建列
-Column name =
-				new Column
-						.Builder()
-						.withHeader("name")
-						.withFooter("foot1")
-						.build();
-name
-		.addCell("John")
-		.addCell("Jane")
-		.addCell("Bob")
-		.addCell("Alice");
+Column name = new Column
+    .Builder()
+    .withHeader("name")
+    .withFooter("foot1")
+    .build();
+name.addCell("John")
+  .addCell("Jane")
+  .addCell("Bob")
+  .addCell("Alice");
 
-Column comment =
-        new Column
-            .Builder()
-            .withHeader("Comment")
-            .withFooter("foot2")
-            .withMaxWidth(10)
-            .build();
-comment
-    .addCell("This is a comment")
-    .addCell("This is another comment")
-    .addCell("This is a third comment")
-    .addCell("This is a fourth comment");
+Column comment = new Column
+    .Builder()
+    .withHeader("Comment")
+    .withFooter("foot2")
+    .withMaxWidth(10)
+    .build();
+comment.addCell("This is a comment")
+  .addCell("This is another comment")
+  .addCell("This is a third comment")
+  .addCell("This is a fourth comment");
 
 // 打印
 table.addColumns(name, comment);
@@ -444,38 +436,34 @@ table.printInfo();
 Character[] borderStyles =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ123".chars().mapToObj(c -> (char) c).toArray(Character[]::new);
 Table table = new Table
-				.Builder()
-				.withTitle("TITLE LINE 1")
-				.withRowNumbersEnabled(true)
-				.withOverflowBehaviour(OverflowBehaviour.CLIP_LEFT)
-				.withBorderStyle(borderStyles, false)
-				.build();
+    .Builder()
+    .withTitle("TITLE LINE 1")
+    .withRowNumbersEnabled(true)
+    .withBorderStyle(borderStyles)
+    .withOverflowBehaviour(OverflowBehaviour.CLIP_LEFT)
+    .build();
 
 // 创建列
-Column name =
-				new Column
-						.Builder()
-						.withHeader("name")
-						.withFooter("foot1")
-						.build();
-name
-		.addCell("John")
-		.addCell("Jane")
-		.addCell("Bob")
-		.addCell("Alice");
+Column name = new Column
+    .Builder()
+    .withHeader("name")
+    .withFooter("foot1")
+    .build();
+name.addCell("John")
+  .addCell("Jane")
+  .addCell("Bob")
+  .addCell("Alice");
 
-Column comment =
-        new Column
-            .Builder()
-            .withHeader("Comment")
-            .withFooter("foot2")
-            .withMaxWidth(10)
-            .build();
-comment
-    .addCell("This is a comment")
-    .addCell("This is another comment")
-    .addCell("This is a third comment")
-    .addCell("This is a fourth comment");
+Column comment = new Column
+    .Builder()
+    .withHeader("Comment")
+    .withFooter("foot2")
+    .withMaxWidth(10)
+    .build();
+comment.addCell("This is a comment")
+  .addCell("This is another comment")
+  .addCell("This is a third comment")
+  .addCell("This is a fourth comment");
 
 // 打印
 table.addColumns(name, comment);
@@ -565,32 +553,29 @@ FANCY2
 
 ```java
 // 创建表
-Table table =
-        new Table.Builder()
-            .withTitle("TITLE LINE 1")
-            .withRowNumbersEnabled(false)
-            .withLimit(2)
-            .build();
+Table table = new Table.Builder()
+    .withTitle("TITLE LINE 1")
+    .withRowNumbersEnabled(false)
+    .withLimit(2)
+    .build();
 
 // 创建列
-Column name =
-        new Column.Builder()
-            .withHeader("name")
-            .withFooter("foot1")
-            .withHeaderAlign(HorizontalAlign.RIGHT)
-            .build();
-name
-		.addCell("John")
-		.addCell("Jane")
-		.addCell("Bob")
-		.addCell("Alice");
-Column comment =
-        new Column.Builder()
-            .withHeader("Comment")
-            .withHeaderAlign(HorizontalAlign.CENTER)
-            .withDataAlign(HorizontalAlign.CENTER)
-            .withFooter("foot2")
-            .build();
+Column name = new Column.Builder()
+    .withHeader("name")
+    .withFooter("foot1")
+    .withHeaderAlign(HorizontalAlign.RIGHT)
+    .build();
+name.addCell("John")
+  .addCell("Jane")
+  .addCell("Bob")
+  .addCell("Alice");
+
+Column comment = new Column.Builder()
+    .withHeader("Comment")
+    .withHeaderAlign(HorizontalAlign.CENTER)
+    .withDataAlign(HorizontalAlign.CENTER)
+    .withFooter("foot2")
+    .build();
 comment
     .addCell("This is a comment")
     .addCell("This is another comment")
